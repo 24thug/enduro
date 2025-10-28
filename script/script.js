@@ -33,53 +33,71 @@ document.addEventListener('DOMContentLoaded', function () {
   var tabButtons = document.querySelectorAll('.tab-btn');
   var tabContents = document.querySelectorAll('.tab-content');
 
-  // Добавляем CSS для анимации
+  // ---------------- CSS для анимации ----------------
   var style = document.createElement('style');
   style.textContent = `
-  .tab-content {
-    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-    opacity: 0;
-    transform: translateX(-150px);
-    height: 0;
-    overflow: hidden;
-  }
-  .tab-content.active {
-    opacity: 1;
-    transform: translateY(0);
-    height: auto;
-    overflow: visible;
-  }
+.tab-content {
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.tab-content.active {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+  overflow: visible;
+}
 `;
   document.head.appendChild(style);
 
+  // ---------------- Сделать первую кнопку активной ----------------
+  if (tabButtons.length > 0) {
+    tabButtons[0].classList.add('active', 'bg-yellow-500', 'text-black');
+    tabButtons[0].classList.remove('bg-gray-200', 'text-black');
+
+    var firstTabId = tabButtons[0].dataset.tab;
+    var firstTabContent = document.getElementById(firstTabId);
+    if (firstTabContent) {
+      firstTabContent.classList.remove('hidden');
+      setTimeout(function () {
+        firstTabContent.classList.add('active');
+      }, 10);
+    }
+  }
+
+  // ---------------- Обработчики клика ----------------
   for (var i = 0; i < tabButtons.length; i++) {
     tabButtons[i].addEventListener('click', function () {
       var tabId = this.dataset.tab;
 
+      // Сброс состояния всех кнопок
       for (var j = 0; j < tabButtons.length; j++) {
         tabButtons[j].classList.remove('active', 'bg-yellow-500', 'text-white');
         tabButtons[j].classList.add('bg-gray-200', 'text-black');
       }
 
+      // Скрыть все табы
       for (var k = 0; k < tabContents.length; k++) {
         tabContents[k].classList.remove('active');
         tabContents[k].classList.add('hidden');
       }
 
+      // Сделать текущую кнопку активной
       this.classList.add('active', 'bg-yellow-500', 'text-white');
       this.classList.remove('bg-gray-200');
 
-      // Показываем выбранный таб с анимацией
+      // Показать выбранный таб с анимацией
       var tabElement = document.getElementById(tabId);
       if (tabElement) {
         tabElement.classList.remove('hidden');
-        // Запускаем анимацию после того как элемент станет видимым
         setTimeout(function () {
           tabElement.classList.add('active');
         }, 10);
       }
     });
   }
+
 
   // Инициализация
   document.addEventListener('DOMContentLoaded', function () {
