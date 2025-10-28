@@ -179,35 +179,33 @@ document.addEventListener('DOMContentLoaded', function () {
   function showCartOverlay() {
     if (!cartOverlay) return;
     cartOverlay.classList.remove('hidden');
-
-    var cartWindow = cartOverlay.querySelector('.bg-white');
-    if (cartWindow) {
-      cartWindow.style.transform = 'scale(0.95)';
-      requestAnimationFrame(function () {
-        cartWindow.style.transform = 'scale(1)';
-      });
-    }
     renderCart();
   }
 
   function hideCartOverlay() {
     if (!cartOverlay) return;
-    var cartWindow = cartOverlay.querySelector('.bg-white');
-    if (!cartWindow) return;
+    cartOverlay.classList.add('hidden');
+  }
 
-    cartWindow.style.transform = 'scale(0.95)';
-    cartWindow.addEventListener('transitionend', function () {
-      cartOverlay.classList.add('hidden');
-    }, {
-      once: true
+  if (cartButton) {
+    cartButton.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showCartOverlay();
     });
   }
 
-  if (cartButton) cartButton.addEventListener('click', showCartOverlay);
-  if (closeCart) closeCart.addEventListener('click', hideCartOverlay);
-  if (cartOverlay) cartOverlay.addEventListener('click', function (e) {
-    if (e.target === cartOverlay) hideCartOverlay();
-  });
+  if (closeCart) {
+    closeCart.addEventListener('click', function (e) {
+      e.stopPropagation(); // предотвращает всплытие и баг с hover
+      hideCartOverlay();
+    });
+  }
+
+  if (cartOverlay) {
+    cartOverlay.addEventListener('click', function (e) {
+      if (e.target === cartOverlay) hideCartOverlay();
+    });
+  }
 
   // ---------------- Mobile Menu ----------------
   var burgerButton = document.getElementById('burgerButton');
@@ -262,17 +260,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function showOrderOverlay() {
     if (!orderOverlay || !orderWindow) return;
-    orderOverlay.classList.remove('hidden'); // затемнение появляется сразу, без анимации
+    orderOverlay.classList.remove('hidden');
     orderWindow.style.transform = 'scale(0.95)';
     requestAnimationFrame(function () {
       orderWindow.style.transform = 'scale(1)';
-    }); // только масштаб окна
+    });
     renderOrderSummary();
   }
 
   function hideOrderOverlay() {
     if (!orderOverlay || !orderWindow) return;
-    orderWindow.style.transform = 'scale(0.95)'; // анимация закрытия только окна
+    orderWindow.style.transform = 'scale(0.95)';
     orderOverlay.addEventListener('transitionend', function () {
       orderOverlay.classList.add('hidden');
     }, {
@@ -329,8 +327,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (productsBtn && productsDropdown) {
     productsBtn.addEventListener('click', function () {
-      if (productsDropdown.className.indexOf('hidden') !== -1) productsDropdown.classList.remove('hidden');
-      else productsDropdown.classList.add('hidden');
+      if (productsDropdown.className.indexOf('hidden') !== -1)
+        productsDropdown.classList.remove('hidden');
+      else
+        productsDropdown.classList.add('hidden');
 
       if (productsArrow) productsArrow.classList.toggle('rotate-180');
     });
@@ -355,7 +355,9 @@ document.addEventListener('DOMContentLoaded', function () {
       total += item.price * item.quantity;
       var itemEl = document.createElement('div');
       itemEl.className = 'flex justify-between';
-      itemEl.innerHTML = '<span>' + item.name + ' × ' + item.quantity + '</span><span>' + (item.price * item.quantity).toLocaleString() + ' ₽</span>';
+      itemEl.innerHTML =
+        '<span>' + item.name + ' × ' + item.quantity + '</span><span>' +
+        (item.price * item.quantity).toLocaleString() + ' ₽</span>';
       orderItemsContainer.appendChild(itemEl);
     }
 
