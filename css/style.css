@@ -2,4 +2,8 @@
   font-family: Rubik;
 }
 
+.home {
+  background-image: url('/img/bg-main.webp');
+}
+
 /* Мобильное меню */
