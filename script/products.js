@@ -1,12 +1,12 @@
   const products = {
       "r14-1": {
           id: "r14-1",
-          name: "Шина задняя R=14 (90/100-14), YuanXing",
+          name: "Шина R=14 (90/100-14), YuanXing",
           price: 2300
       },
       "r14-2": {
           id: "r14-2",
-          name: "Шина задняя R=14 (90/100-14), Wanda",
+          name: "Шина R=14 (90/100-14), Wanda",
           price: 2600
       },
       "r14-3": {
