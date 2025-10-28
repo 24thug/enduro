@@ -33,6 +33,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var tabButtons = document.querySelectorAll('.tab-btn');
   var tabContents = document.querySelectorAll('.tab-content');
 
+  // Добавляем CSS для анимации
+  var style = document.createElement('style');
+  style.textContent = `
+  .tab-content {
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    opacity: 0;
+    transform: translateX(-150px);
+    height: 0;
+    overflow: hidden;
+  }
+  .tab-content.active {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    overflow: visible;
+  }
+`;
+  document.head.appendChild(style);
+
   for (var i = 0; i < tabButtons.length; i++) {
     tabButtons[i].addEventListener('click', function () {
       var tabId = this.dataset.tab;
@@ -43,16 +62,40 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       for (var k = 0; k < tabContents.length; k++) {
+        tabContents[k].classList.remove('active');
         tabContents[k].classList.add('hidden');
       }
 
       this.classList.add('active', 'bg-yellow-500', 'text-white');
       this.classList.remove('bg-gray-200');
 
+      // Показываем выбранный таб с анимацией
       var tabElement = document.getElementById(tabId);
-      if (tabElement) tabElement.classList.remove('hidden');
+      if (tabElement) {
+        tabElement.classList.remove('hidden');
+        // Запускаем анимацию после того как элемент станет видимым
+        setTimeout(function () {
+          tabElement.classList.add('active');
+        }, 10);
+      }
     });
   }
+
+  // Инициализация
+  document.addEventListener('DOMContentLoaded', function () {
+    if (tabButtons.length > 0 && tabContents.length > 0) {
+      var firstButton = tabButtons[0];
+      var firstTabId = firstButton.dataset.tab;
+      var firstTab = document.getElementById(firstTabId);
+
+      if (firstTab) {
+        firstButton.classList.add('active', 'bg-yellow-500', 'text-white');
+        firstButton.classList.remove('bg-gray-200', 'text-black');
+        firstTab.classList.remove('hidden');
+        firstTab.classList.add('active');
+      }
+    }
+  });
 
   // ---------------- Cart ----------------
   var cartOverlay = document.getElementById('cartOverlay');
@@ -105,12 +148,14 @@ document.addEventListener('DOMContentLoaded', function () {
       itemEl.innerHTML =
         '<div>' +
         '<h4 class="font-semibold text-gray-900">' + item.name + '</h4>' +
-        '<p class="text-gray-600 text-sm">' + item.quantity + ' × ' + item.price.toLocaleString() + ' ₽</p>' +
+        '<p class="text-gray-500 text-sm">' + item.price.toLocaleString() + ' ₽</p>' +
         '</div>' +
-        '<div class="flex items-center gap-2">' +
-        '<button class="decrease text-red-500 font-bold px-2">−</button>' +
-        '<button class="increase text-green-500 font-bold px-2">+</button>' +
+        '<div class="flex items-center gap-3">' +
+        '<button class="decrease text-gray-700 text-xl leading-none hover:text-black transition">−</button>' +
+        '<span class="text-base font-medium w-5 text-center text-gray-900">' + item.quantity + '</span>' +
+        '<button class="increase text-gray-700 text-lg leading-none hover:text-black transition">×</button>' +
         '</div>';
+
 
       var decreaseBtn = itemEl.querySelector('.decrease');
       var increaseBtn = itemEl.querySelector('.increase');
@@ -247,6 +292,34 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.target === mobileMenuOverlay) closeMobileMenuAnimated();
     });
   }
+  if (mobileMenuOverlay) {
+    // Закрытие меню при клике на любую ссылку внутри
+    mobileMenuOverlay.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        // Используем вашу существующую функцию закрытия
+        if (typeof closeMobileMenuAnimated === 'function') {
+          closeMobileMenuAnimated();
+        }
+      }
+    });
+  }
+  // ---------------- Smooth scroll for anchor links ----------------
+  var anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  anchorLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var targetId = this.getAttribute('href').substring(1);
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault(); // отменяем стандартный переход
+        targetEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
 
   // ---------------- Order Modal ----------------
   var checkoutButton = document.getElementById('checkoutButton');
@@ -261,22 +334,28 @@ document.addEventListener('DOMContentLoaded', function () {
   function showOrderOverlay() {
     if (!orderOverlay || !orderWindow) return;
     orderOverlay.classList.remove('hidden');
-    orderWindow.style.transform = 'scale(0.95)';
-    requestAnimationFrame(function () {
+
+    requestAnimationFrame(() => {
+      orderOverlay.classList.remove('opacity-0');
       orderWindow.style.transform = 'scale(1)';
     });
+
     renderOrderSummary();
   }
 
   function hideOrderOverlay() {
     if (!orderOverlay || !orderWindow) return;
+
+    orderOverlay.classList.add('opacity-0');
     orderWindow.style.transform = 'scale(0.95)';
-    orderOverlay.addEventListener('transitionend', function () {
+
+    orderOverlay.addEventListener('transitionend', () => {
       orderOverlay.classList.add('hidden');
     }, {
       once: true
     });
   }
+
 
   if (checkoutButton) checkoutButton.addEventListener('click', function () {
     hideCartOverlay();

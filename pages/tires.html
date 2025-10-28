@@ -14,7 +14,7 @@
 <body class="font-rubik antialiased bg-white">
     <!-- HEADER -->
     <!-- Шапка сайта -->
-    <header class="fixed top-0 left-0 right-0 bg-gray-700 text-white shadow-lg mx-auto z-30">
+    <header class="fixed top-0 left-0 right-0 bg-gray-800 bg-opacity-80 text-white shadow-lg mx-auto z-30">
         <nav class="mx-auto px-4 py-3 flex justify-between items-center">
             <!-- Логотип для мобильных -->
             <div class="md:hidden flex items-center">
@@ -56,72 +56,75 @@
                 </button>
             </div>
         </nav>
-    </header>
 
-    <!-- Мобильное меню справа -->
-    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden ">
-        <div
-            class="fixed right-0 top-0 h-full w-64 bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out text-white">
-            <!-- Заголовок мобильного меню -->
-            <div class="flex justify-between items-center p-4 border-b border-gray-700">
-                <h3 class="text-lg font-semibold">Меню</h3>
-                <button id="closeMobileMenu" class="p-2 hover:text-yellow-600 transition-colors duration-200">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                        </path>
-                    </svg>
-                </button>
-            </div>
 
-            <!-- Навигация мобильного меню -->
-            <div class="p-4 flex flex-col space-y-4 opacity-90 bg-gray-800 text-white">
-                <a href="../index.html#home"
-                    class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
-                    Главная
-                </a>
-
-                <!-- Товары с выпадающим меню -->
-                <div class="relative">
-                    <button id="productsBtn"
-                        class="w-full text-left hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700 flex justify-between items-center">
-                        Товары
-                        <span id="arrow" class="transition-transform duration-200">▼</span>
+        <!-- Мобильное меню справа -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden ">
+            <div
+                class="fixed right-0 top-0 h-full w-64 bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out text-white">
+                <!-- Заголовок мобильного меню -->
+                <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                    <h3 class="text-lg font-semibold">Меню</h3>
+                    <button id="closeMobileMenu" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12">
+                            </path>
+                        </svg>
                     </button>
-
-                    <div id="productsDropdown" class="hidden flex flex-col max-h-80 overflow-y-auto mt-2 p-2 rounded">
-                        <a href="tires.html" class="hover:text-yellow-600 py-1">Шины и Камеры</a>
-                        <a href="#wheels" class="hover:text-yellow-600 py-1">Диски и Колеса</a>
-                        <a href="#plastic" class="hover:text-yellow-600 py-1">Пластик</a>
-                        <a href="#engine" class="hover:text-yellow-600 py-1">Двигатель</a>
-                        <a href="#frame" class="hover:text-yellow-600 py-1">Рама</a>
-                        <a href="#electrics" class="hover:text-yellow-600 py-1">Электрика</a>
-                        <a href="#suspension" class="hover:text-yellow-600 py-1">Амортизаторы</a>
-                        <a href="#brakes" class="hover:text-yellow-600 py-1">Тормоза</a>
-                        <a href="#gears" class="hover:text-yellow-600 py-1">Звезды и Цепи</a>
-                        <a href="#cables" class="hover:text-yellow-600 py-1">Тросики</a>
-                        <a href="#bearings" class="hover:text-yellow-600 py-1">Подшипники и Сальники</a>
-                        <a href="#handles" class="hover:text-yellow-600 py-1">(Руль, Рычаги и Ручки)</a>
-                        <a href="#carburetor" class="hover:text-yellow-600 py-1">Карбюратор</a>
-                        <a href="#exhaust" class="hover:text-yellow-600 py-1">Глушители</a>
-                        <a href="#airfilters" class="hover:text-yellow-600 py-1">Воздушные фильтры</a>
-                        <a href="#sparkplugs" class="hover:text-yellow-600 py-1">Свечи зажигания</a>
-                        <a href="#bushings" class="hover:text-yellow-600 py-1">Втулки и Сайлентблоки</a>
-                        <a href="#fasteners" class="hover:text-yellow-600 py-1">(Болты, Оси, Гайки, Шайбы)</a>
-                    </div>
                 </div>
 
-                <a href="../index.html#payment"
-                    class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
-                    Доставка
-                </a>
-                <a href="../index.html#contacts"
-                    class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
-                    Контакты
-                </a>
-            </div>
+                <!-- Навигация мобильного меню -->
+                <div class="p-4 flex flex-col space-y-4 opacity-90 bg-gray-800 text-white">
+                    <a href="../index.html#home"
+                        class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+                        Главная
+                    </a>
 
+                    <!-- Товары с выпадающим меню -->
+                    <div class="relative">
+                        <button id="productsBtn"
+                            class="w-full text-left hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700 flex justify-between items-center">
+                            Товары
+                            <span id="arrow" class="transition-transform duration-200">▼</span>
+                        </button>
+
+                        <div id="productsDropdown"
+                            class="hidden flex flex-col max-h-80 overflow-y-auto mt-2 p-2 rounded">
+                            <a href="tires.html" class="hover:text-yellow-600 py-1">Шины и Камеры</a>
+                            <a href="#wheels" class="hover:text-yellow-600 py-1">Диски и Колеса</a>
+                            <a href="#plastic" class="hover:text-yellow-600 py-1">Пластик</a>
+                            <a href="#engine" class="hover:text-yellow-600 py-1">Двигатель</a>
+                            <a href="#frame" class="hover:text-yellow-600 py-1">Рама</a>
+                            <a href="#electrics" class="hover:text-yellow-600 py-1">Электрика</a>
+                            <a href="#suspension" class="hover:text-yellow-600 py-1">Амортизаторы</a>
+                            <a href="#brakes" class="hover:text-yellow-600 py-1">Тормоза</a>
+                            <a href="#gears" class="hover:text-yellow-600 py-1">Звезды и Цепи</a>
+                            <a href="#cables" class="hover:text-yellow-600 py-1">Тросики</a>
+                            <a href="#bearings" class="hover:text-yellow-600 py-1">Подшипники и Сальники</a>
+                            <a href="#handles" class="hover:text-yellow-600 py-1">(Руль, Рычаги и Ручки)</a>
+                            <a href="#carburetor" class="hover:text-yellow-600 py-1">Карбюратор</a>
+                            <a href="#exhaust" class="hover:text-yellow-600 py-1">Глушители</a>
+                            <a href="#airfilters" class="hover:text-yellow-600 py-1">Воздушные фильтры</a>
+                            <a href="#sparkplugs" class="hover:text-yellow-600 py-1">Свечи зажигания</a>
+                            <a href="#bushings" class="hover:text-yellow-600 py-1">Втулки и Сайлентблоки</a>
+                            <a href="#fasteners" class="hover:text-yellow-600 py-1">(Болты, Оси, Гайки, Шайбы)</a>
+                        </div>
+                    </div>
+
+                    <a href="../index.html#payment"
+                        class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+                        Доставка
+                    </a>
+                    <a href="../index.html#contacts"
+                        class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+                        Контакты
+                    </a>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </header>
 
     <!-- Окно корзины -->
     <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
@@ -146,7 +149,8 @@
                             <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13l2.5 5.5m0 0L17 21"></path>
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13l2.5 5.5m0 0L17 21">
+                                </path>
                             </svg>
                             <p class="text-lg">Корзина пуста</p>
                         </div>
@@ -169,8 +173,9 @@
     </div>
 
     <!-- Модальное окно оформления заказа -->
-    <div id="orderOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden transition-opacity duration-300">
-        <div class="fixed inset-0 flex items-center justify-center p-4">
+    <div id="orderOverlay"
+        class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 opacity-0">
+        <div class="rounded-xl p-6 transform transition-transform duration-300 scale-95">
             <div
                 class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-y-auto transform transition-transform duration-300 scale-95">
                 <div class="flex justify-between items-center p-6 border-b">
@@ -223,49 +228,45 @@
             </div>
         </div>
     </div>
-
     <!-- Уведомление -->
     <div id="toastContainer" class="fixed top-4 right-4 flex flex-col gap-2 z-50 "></div>
-    <!-- Уведомление -->
 
     <!-- Разделы товаров -->
     <div id="home"></div>
-    <section id="home"
-        class="pt-20 pb-16 xs:pt-24 xs:pb-20 md:py-40 px-4 xs:px-6 sm:px-8 md:px-20 lg:px-20 relative bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
-        style="background-image: url('../pages/tires/DSC03253-scaled.webp');">
-
+    <section id="home" class="pt-20 pb-16 xs:pt-24 xs:pb-20 md:py-40 px-4 xs:px-6 sm:px-8 md:px-20 lg:px-20">
+        <img src="../img/bg-main.png" alt="Фон" class="fixed inset-0 b w-full h-full object-cover -z-10">
         <!-- Затемнение -->
-        <div class="absolute inset-0 bg-black/60 z-0 pointer-events-none"></div>
+        <div class="fixed inset-0 bg-black/70 z-0 pointer-events-none"></div>
+
 
         <!-- Контент -->
-        <div class="relative z-10">
-
+        <div class="relative z-10 ">
             <!-- Разделы -->
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <div class="grid grid-cols-6 gap-4 mb-8  z-30">
                 <button
-                    class="tab-btn active px-6 py-3 bg-yellow-500 text-white rounded-lg transition-colors hover:bg-yellow-500 hover:text-white transition-colors"
+                    class="tab-btn  py-3 bg-gray-200 rounded-lg transition-colors hover:bg-yellow-500 hover:text-white transition-colors"
                     data-tab="R14">R14</button>
                 <button
-                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    class="tab-btn  py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
                     data-tab="R16">R16</button>
                 <button
-                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    class="tab-btn  py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
                     data-tab="R17">R17</button>
                 <button
-                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    class="tab-btn  py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
                     data-tab="R18">R18</button>
                 <button
-                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    class="tab-btn  py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
                     data-tab="R19">R19</button>
                 <button
-                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    class="tab-btn  py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
                     data-tab="R21">R21</button>
             </div>
 
             <!-- Контент разделов -->
-            <div class="tab-content active" id="R14">
+            <div class="tab-content hidden " id="R14">
                 <div
-                    class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+                    class="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
                     <!-- Первый товар -->
                     <div
                         class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
@@ -493,7 +494,7 @@
 
             <div class="tab-content hidden" id="R16">
                 <div
-                    class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+                    class="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
                     <!-- Первый товар -->
                     <div
                         class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">

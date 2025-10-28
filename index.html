@@ -54,68 +54,69 @@
         </button>
       </div>
     </nav>
-  </header>
 
-  <!-- Мобильное меню справа -->
-  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden ">
-    <div
-      class="fixed right-0 top-0 h-full w-64 bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out text-white">
-      <!-- Заголовок мобильного меню -->
-      <div class="flex justify-between items-center p-4 border-b border-gray-700">
-        <h3 class="text-lg font-semibold">Меню</h3>
-        <button id="closeMobileMenu" class="p-2 hover:text-yellow-600 transition-colors duration-200">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Навигация мобильного меню -->
-      <div class="p-4 flex flex-col space-y-4 opacity-90 bg-gray-800 text-white">
-        <a href="#home" class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
-          Главная
-        </a>
-
-        <!-- Товары с выпадающим меню -->
-        <div class="relative">
-          <button id="productsBtn"
-            class="w-full text-left hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700 flex justify-between items-center">
-            Товары
-            <span id="arrow" class="transition-transform duration-200">▼</span>
+    <!-- Мобильное меню справа -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden ">
+      <div
+        class="fixed right-0 top-0 h-full w-64 bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out text-white">
+        <!-- Заголовок мобильного меню -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-700">
+          <h3 class="text-lg font-semibold">Меню</h3>
+          <button id="closeMobileMenu" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
           </button>
-
-          <div id="productsDropdown" class="hidden flex flex-col max-h-80 overflow-y-auto mt-2 p-2 rounded">
-            <a href="./pages/tires.html" class="hover:text-yellow-600 py-1">Шины и Камеры</a>
-            <a href="#wheels" class="hover:text-yellow-600 py-1">Диски и Колеса</a>
-            <a href="#plastic" class="hover:text-yellow-600 py-1">Пластик</a>
-            <a href="#engine" class="hover:text-yellow-600 py-1">Двигатель</a>
-            <a href="#frame" class="hover:text-yellow-600 py-1">Рама</a>
-            <a href="#electrics" class="hover:text-yellow-600 py-1">Электрика</a>
-            <a href="#suspension" class="hover:text-yellow-600 py-1">Амортизаторы</a>
-            <a href="#brakes" class="hover:text-yellow-600 py-1">Тормоза</a>
-            <a href="#gears" class="hover:text-yellow-600 py-1">Звезды и Цепи</a>
-            <a href="#cables" class="hover:text-yellow-600 py-1">Тросики</a>
-            <a href="#bearings" class="hover:text-yellow-600 py-1">Подшипники и Сальники</a>
-            <a href="#handles" class="hover:text-yellow-600 py-1">(Руль, Рычаги и Ручки)</a>
-            <a href="#carburetor" class="hover:text-yellow-600 py-1">Карбюратор</a>
-            <a href="#exhaust" class="hover:text-yellow-600 py-1">Глушители</a>
-            <a href="#airfilters" class="hover:text-yellow-600 py-1">Воздушные фильтры</a>
-            <a href="#sparkplugs" class="hover:text-yellow-600 py-1">Свечи зажигания</a>
-            <a href="#bushings" class="hover:text-yellow-600 py-1">Втулки и Сайлентблоки</a>
-            <a href="#fasteners" class="hover:text-yellow-600 py-1">(Болты, Оси, Гайки, Шайбы)</a>
-          </div>
         </div>
 
-        <a href="#payment" class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
-          Доставка
-        </a>
-        <a href="#contacts" class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
-          Контакты
-        </a>
-      </div>
+        <!-- Навигация мобильного меню -->
+        <div class="p-4 flex flex-col space-y-4 opacity-90 bg-gray-800 text-white">
+          <a href="#home" class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+            Главная
+          </a>
 
+          <!-- Товары с выпадающим меню -->
+          <div class="relative">
+            <button id="productsBtn"
+              class="w-full text-left hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700 flex justify-between items-center">
+              Товары
+              <span id="arrow" class="transition-transform duration-200">▼</span>
+            </button>
+
+            <div id="productsDropdown" class="hidden flex flex-col max-h-80 overflow-y-auto mt-2 p-2 rounded">
+              <a href="./pages/tires.html" class="hover:text-yellow-600 py-1">Шины и Камеры</a>
+              <a href="#wheels" class="hover:text-yellow-600 py-1">Диски и Колеса</a>
+              <a href="#plastic" class="hover:text-yellow-600 py-1">Пластик</a>
+              <a href="#engine" class="hover:text-yellow-600 py-1">Двигатель</a>
+              <a href="#frame" class="hover:text-yellow-600 py-1">Рама</a>
+              <a href="#electrics" class="hover:text-yellow-600 py-1">Электрика</a>
+              <a href="#suspension" class="hover:text-yellow-600 py-1">Амортизаторы</a>
+              <a href="#brakes" class="hover:text-yellow-600 py-1">Тормоза</a>
+              <a href="#gears" class="hover:text-yellow-600 py-1">Звезды и Цепи</a>
+              <a href="#cables" class="hover:text-yellow-600 py-1">Тросики</a>
+              <a href="#bearings" class="hover:text-yellow-600 py-1">Подшипники и Сальники</a>
+              <a href="#handles" class="hover:text-yellow-600 py-1">(Руль, Рычаги и Ручки)</a>
+              <a href="#carburetor" class="hover:text-yellow-600 py-1">Карбюратор</a>
+              <a href="#exhaust" class="hover:text-yellow-600 py-1">Глушители</a>
+              <a href="#airfilters" class="hover:text-yellow-600 py-1">Воздушные фильтры</a>
+              <a href="#sparkplugs" class="hover:text-yellow-600 py-1">Свечи зажигания</a>
+              <a href="#bushings" class="hover:text-yellow-600 py-1">Втулки и Сайлентблоки</a>
+              <a href="#fasteners" class="hover:text-yellow-600 py-1">(Болты, Оси, Гайки, Шайбы)</a>
+            </div>
+          </div>
+
+          <a href="#payment" class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+            Доставка
+          </a>
+          <a href="#contacts"
+            class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+            Контакты
+          </a>
+        </div>
+
+      </div>
     </div>
-  </div>
+  </header>
 
   <!-- Окно корзины -->
   <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden ">
@@ -213,6 +214,10 @@
       </div>
     </div>
   </div>
+
+
+
+  <div id="toastContainer" class="fixed top-4 right-4 flex flex-col gap-2 z-50 "></div>
 
 
 
@@ -632,7 +637,7 @@
     </div>
   </section>
 
-
+  <script src="script/products.js"></script>
   <script src="script/script.js"></script>
 </body>
 
