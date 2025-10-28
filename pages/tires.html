@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Шины - Мототехника Брянск</title>
+</head>
+
+<body class="font-rubik antialiased bg-white">
+    <!-- HEADER -->
+    <!-- Шапка сайта -->
+    <header class="fixed top-0 left-0 right-0 bg-gray-700 text-white shadow-lg mx-auto z-30">
+        <nav class="mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Логотип для мобильных -->
+            <div class="md:hidden flex items-center">
+                <a href="#" class="uppercase">МотоТехника-брянск</a>
+            </div>
+
+            <!-- Пустой блок для центрирования на десктопе -->
+            <div class="hidden md:block md:w-1/3"></div>
+
+            <!-- Основное меню для десктопа -->
+            <div class="hidden md:flex space-x-8 uppercase  opacity-90 justify-center md:w-1/3">
+                <a href="../index.html#home" class="hover:text-yellow-600 transition-colors duration-200">Главная</a>
+                <a href="../index.html#products" class="hover:text-yellow-600 transition-colors duration-200">Товары</a>
+                <a href="../index.html#payment"
+                    class="hover:text-yellow-600 transition-colors duration-200">Доставка</a>
+                <a href="../index.html#contacts"
+                    class="hover:text-yellow-600 transition-colors duration-200">Контакты</a>
+            </div>
+
+            <!-- Правая часть с корзиной и бургером -->
+            <div class="flex items-center space-x-5 justify-end md:w-1/3">
+                <!-- Корзина -->
+                <div class="relative">
+                    <button id="cartButton" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13l2.5 5.5m0 0L17 21"></path>
+                        </svg>
+                        <span id="cartCount"
+                            class="absolute -top-1 -right-1 bg-yellow-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">0</span>
+                    </button>
+                </div>
+                <!-- Бургер меню для мобильных -->
+                <button id="burgerButton" class="md:hidden p-2 hover:text-yellow-600 transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Мобильное меню справа -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden ">
+        <div
+            class="fixed right-0 top-0 h-full w-64 bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out text-white">
+            <!-- Заголовок мобильного меню -->
+            <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                <h3 class="text-lg font-semibold">Меню</h3>
+                <button id="closeMobileMenu" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Навигация мобильного меню -->
+            <div class="p-4 flex flex-col space-y-4 opacity-90 bg-gray-800 text-white">
+                <a href="#home"
+                    class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+                    Главная
+                </a>
+
+                <!-- Товары с выпадающим меню -->
+                <div class="relative">
+                    <button id="productsBtn"
+                        class="w-full text-left hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700 flex justify-between items-center">
+                        Товары
+                        <span id="arrow" class="transition-transform duration-200">▼</span>
+                    </button>
+
+                    <div id="productsDropdown" class="hidden flex flex-col max-h-80 overflow-y-auto mt-2 p-2 rounded">
+                        <a href="tires.html" class="hover:text-yellow-600 py-1">Шины и Камеры</a>
+                        <a href="#wheels" class="hover:text-yellow-600 py-1">Диски и Колеса</a>
+                        <a href="#plastic" class="hover:text-yellow-600 py-1">Пластик</a>
+                        <a href="#engine" class="hover:text-yellow-600 py-1">Двигатель</a>
+                        <a href="#frame" class="hover:text-yellow-600 py-1">Рама</a>
+                        <a href="#electrics" class="hover:text-yellow-600 py-1">Электрика</a>
+                        <a href="#suspension" class="hover:text-yellow-600 py-1">Амортизаторы</a>
+                        <a href="#brakes" class="hover:text-yellow-600 py-1">Тормоза</a>
+                        <a href="#gears" class="hover:text-yellow-600 py-1">Звезды и Цепи</a>
+                        <a href="#cables" class="hover:text-yellow-600 py-1">Тросики</a>
+                        <a href="#bearings" class="hover:text-yellow-600 py-1">Подшипники и Сальники</a>
+                        <a href="#handles" class="hover:text-yellow-600 py-1">(Руль, Рычаги и Ручки)</a>
+                        <a href="#carburetor" class="hover:text-yellow-600 py-1">Карбюратор</a>
+                        <a href="#exhaust" class="hover:text-yellow-600 py-1">Глушители</a>
+                        <a href="#airfilters" class="hover:text-yellow-600 py-1">Воздушные фильтры</a>
+                        <a href="#sparkplugs" class="hover:text-yellow-600 py-1">Свечи зажигания</a>
+                        <a href="#bushings" class="hover:text-yellow-600 py-1">Втулки и Сайлентблоки</a>
+                        <a href="#fasteners" class="hover:text-yellow-600 py-1">(Болты, Оси, Гайки, Шайбы)</a>
+                    </div>
+                </div>
+
+                <a href="../index.html#payment"
+                    class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+                    Доставка
+                </a>
+                <a href="../index.html#contacts"
+                    class="hover:text-yellow-600 transition-colors duration-200 py-3 border-b border-gray-700">
+                    Контакты
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Окно корзины -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+                <!-- Заголовок корзины -->
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-xl font-semibold text-gray-900">Корзина</h3>
+                    <button id="closeCart" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Содержимое корзины -->
+                <div class="flex-1 p-6 overflow-y-auto">
+                    <div id="cartItems" class="space-y-4">
+                        <!-- Товары будут добавляться сюда -->
+                        <div class="text-center text-gray-500 py-8">
+                            <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13l2.5 5.5m0 0L17 21"></path>
+                            </svg>
+                            <p class="text-lg">Корзина пуста</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Футер корзины -->
+                <div class="border-t bg-gray-50 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg font-semibold">Итого:</span>
+                        <span id="cartTotal" class="text-xl font-bold text-gray-900">0 ₽</span>
+                    </div>
+                    <button id="checkoutButton"
+                        class="w-full bg-yellow-600 opacity-80 hover:opacity-100 text-black py-4 px-6 rounded-lg hover:text-[16px] duration-300 font-semibold">
+                        Оформить заказ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно оформления заказа -->
+    <div id="orderOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden transition-opacity duration-300">
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div
+                class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-y-auto transform transition-transform duration-300 scale-95">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-xl font-semibold text-gray-900">Оформление заказа</h3>
+                    <div class="flex gap-2">
+                        <button id="backToCart" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+                            ← В корзину
+                        </button>
+                        <button id="closeOrder" class="p-2 hover:text-yellow-600 transition-colors duration-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-6 flex-1">
+                    <!-- Блок с выбранными товарами -->
+                    <div id="orderSummary" class="mb-4 p-4 bg-gray-100 rounded-lg max-h-64 overflow-y-auto">
+                        <h4 class="font-semibold mb-2">Ваши товары:</h4>
+                        <div id="orderItems" class="space-y-2">
+                            <!-- Здесь JS будет вставлять товары -->
+                        </div>
+                        <div class="flex justify-between font-bold mt-4">
+                            <span>Итого:</span>
+                            <span id="orderTotal">0 ₽</span>
+                        </div>
+                    </div>
+
+                    <!-- Форма заказа -->
+                    <form id="orderForm" class="space-y-4">
+                        <input type="text" name="fullname" placeholder="ФИО" required
+                            class="w-full border rounded-lg p-3 focus:outline-yellow-500 bg-gray-100">
+                        <input type="text" name="address"
+                            placeholder="241520, Брянск, п.Супонево, пер. 3-й Славянский, 19" required
+                            class="w-full border rounded-lg p-3 focus:outline-yellow-500 bg-gray-100">
+                        <input type="email" name="email" placeholder="Почта" required
+                            class="w-full border rounded-lg p-3 focus:outline-yellow-500 bg-gray-100">
+                        <input type="text" name="telegram" placeholder="Telegram, @" required
+                            class="w-full border rounded-lg p-3 focus:outline-yellow-500 bg-gray-100">
+                        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required
+                            class="w-full border rounded-lg p-3 focus:outline-yellow-500 bg-gray-100" id="phoneInput">
+                        <button type="submit"
+                            class="w-full bg-yellow-600 opacity-80 hover:opacity-100 text-black py-4 px-6 rounded-lg font-semibold">
+                            Отправить заказ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div id="toastContainer" class="fixed top-4 right-4 flex flex-col gap-2 z-50 "></div>
+    <!-- Уведомление -->
+
+    <!-- Разделы товаров -->
+    <div id="home"></div>
+    <section id="home"
+        class="pt-20 pb-16 xs:pt-24 xs:pb-20 md:py-40 px-4 xs:px-6 sm:px-8 md:px-20 lg:px-20 relative bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
+        style="background-image: url('/pages/tires/DSC03253-scaled.webp')">
+
+        <!-- Затемнение -->
+        <div class="absolute inset-0 bg-black/60 z-0 pointer-events-none"></div>
+
+        <!-- Контент -->
+        <div class="relative z-10">
+
+            <!-- Разделы -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button
+                    class="tab-btn active px-6 py-3 bg-yellow-500 text-white rounded-lg transition-colors hover:bg-yellow-500 hover:text-white transition-colors"
+                    data-tab="R14">R14</button>
+                <button
+                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    data-tab="R16">R16</button>
+                <button
+                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    data-tab="R17">R17</button>
+                <button
+                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    data-tab="R18">R18</button>
+                <button
+                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    data-tab="R19">R19</button>
+                <button
+                    class="tab-btn px-6 py-3 bg-gray-200 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors"
+                    data-tab="R21">R21</button>
+            </div>
+
+            <!-- Контент разделов -->
+            <div class="tab-content active" id="R14">
+                <div
+                    class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+                    <!-- Первый товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <img src="../pages/tires/img/R14/R14_Yuanxing_2.png" alt="R14_Yuanxing_2"
+                                class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                        </div>
+
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Шина R=14 (90/100-14)
+                        </h3>
+
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Yuanxing</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Диаметр</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">14"</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">90/100</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">2300 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r14-1">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Второй товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/R14/r14_wanda_1.webp" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Шина R=14 (90/100-14)
+                        </h3>
+
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Wanda</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Диаметр</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">14"</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">90/100</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">2600 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r14-2">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Третий товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/antibuksator.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Антибуксатор R=14 (1.85)
+                        </h3>
+
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Ширина обода</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">1.85</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">450 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r14-3">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Четвертый товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/intires.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Камера R=14 (2.75)
+                        </h3>
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Совместимость</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">Шина R14</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">250 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r14-4">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Пятый товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/flipper.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Флипер R=14
+                        </h3>
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Совместимость</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">Шина R14</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">50 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r14-5">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Раздел R16 -->
+
+            <div class="tab-content hidden" id="R16">
+                <div
+                    class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+                    <!-- Первый товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <img src="../pages/tires/img/R16/regulmoto_r16_2.png" alt="R14_Yuanxing_2"
+                                class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                        </div>
+
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Шина R=16 (90/100-16)
+                        </h3>
+
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Regulmoto</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Диаметр</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">16"</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">90/100</span>
+                            </div>
+                        </div>
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">3350 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-1">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Второй товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <img src="../pages/tires/img/R16/Yuanxing_R16_2.png" alt="R14_Yuanxing_2"
+                                class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                        </div>
+
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Шина R=16 (90/100-16)
+                        </h3>
+
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">YuanXing</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Диаметр</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">16"</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">90/100</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">2800 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-2">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Третий товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/antibuksator.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Антибуксатор R=16 (1.6)
+                        </h3>
+
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Ширина обода</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">1.6</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">450 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-3">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Четвертый товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/intires.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Камера R=16 (3.5/3.25)
+                        </h3>
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">9 см</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">250 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-4">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 5 товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/intires.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Камера R=16 (2,5-16)
+                        </h3>
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">6 см</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">250 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-5">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/intires.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Камера Racer Enduro R=16 (2,75-16)
+                        </h3>
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Racer Enduro</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Ширина</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">6 см</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">250 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-6">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 6 товар -->
+                    <div
+                        class="bg-white bg-opacity-90 rounded-lg shadow-sm sm:shadow-md p-3 sm:p-4 flex flex-col w-full hover:shadow-lg transition-shadow duration-300">
+                        <!-- Изображение -->
+                        <div class="relative overflow-hidden rounded h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 mb-3 sm:mb-4">
+                            <div class="carousel-track flex transition-transform duration-300 h-full">
+                                <img src="../pages/tires/img/flipper.png" alt="r14_wanda_1"
+                                    class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+                            </div>
+                        </div>
+                        <!-- Название товара -->
+                        <h3
+                            class="sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-gray-900 line-clamp-2 leading-tight">
+                            Флипер R=16
+                        </h3>
+                        <!-- Характеристики -->
+                        <div class="text-gray-600 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="whitespace-nowrap">Производитель</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium truncate ml-1">Китай</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span>Совместимость</span>
+                                <div class="flex-1 border-b border-dashed border-gray-300 mx-2"></div>
+                                <span class="font-medium">Шина R16</span>
+                            </div>
+                        </div>
+
+                        <!-- Цена и кнопка -->
+                        <div
+                            class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-3 mt-auto">
+                            <span class="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">50 ₽</span>
+                            <button
+                                class="add-to-cart bg-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap w-full xs:w-auto"
+                                data-product-id="r16-7">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 7 товар -->
+
+                </div>
+
+            </div>
+
+            <!-- TODO: R17, R18, R19, R21 аналогично -->
+        </div>
+    </section>
+
+    <!-- ✅ Tab Script -->
+
+
+    <!-- Подключение JavaScript -->
+    <script src="../script/script.js""></script>
+    <script src=" ../script/products.js"> </script> </body> </html>
